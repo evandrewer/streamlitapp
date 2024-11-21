@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 def top_names_plot(df, year=2000, n=10, width=800, height=600, variable='count'):
-    color_map = {"M": "#3498db", "F": "#db6f34"}
+    color_map = {"M": "#2974df", "F": "#ff3397"}
     year_data = df[df['year'] == year].copy()
     year_data['overall_rank'] = year_data[variable].rank(method='min', ascending=False).astype(int)
 
@@ -30,10 +30,10 @@ def top_names_plot(df, year=2000, n=10, width=800, height=600, variable='count')
     return fig  
 
 
-def name_frequencies_plot(df, year=200, width=800, height=600):
+def name_frequencies_plot(df, year=2000, width=800, height=600):
     year_data = df[df['year'] == year].copy()
     name_counts = year_data.groupby(['name', 'sex'])['count'].sum().reset_index()
-    color_map = {"M": "#636EFA", "F": "#EF553B"}
+    color_map = {"M": "#2974df", "F": "#ff3397"}
 
     fig = px.histogram(
         name_counts, 
@@ -59,7 +59,7 @@ def name_frequencies_plot(df, year=200, width=800, height=600):
 
 def name_trend_plot(df, name='John', width=800, height=600):
     name_data = df[df['name'] == name].copy()
-    color_map = {"M": "#636EFA", "F": "#EF553B"}
+    color_map = {"M": "#2974df", "F": "#ff3397"}
 
     if name_data.empty:
         print("Name not found in the dataset.")
@@ -115,7 +115,7 @@ def name_trend_plot(df, name='John', width=800, height=600):
 
 def name_sex_balance_plot(df, name='John'):
     name_data = df[df['name'] == name].copy()
-    color_map = {"M": "#636EFA", "F": "#EF553B"}
+    color_map = {"M": "#2974df", "F": "#ff3397"}
 
     if name_data.empty:
         print("Name not found in the dataset.")
